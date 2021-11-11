@@ -12,9 +12,9 @@ public class BaseTests {
     protected WebDriver chromeDriver;
 
     @BeforeEach
-    public void before(){
+    public void before() {
 
-        System.setProperty("webdriver.chrome.driver",System.getenv("CHROME_DRIVER"));
+        System.setProperty("webdriver.chrome.driver", System.getenv("CHROME_DRIVER"));
         chromeDriver = new ChromeDriver();
         chromeDriver.manage().window().maximize();
         chromeDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -23,7 +23,7 @@ public class BaseTests {
     }
 
     @AfterEach
-    public void closeBellTest(){
+    public void closeBellTest() {
         chromeDriver.quit();
     }
 }

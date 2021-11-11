@@ -30,4 +30,14 @@ public class Tests extends BaseTests {
         yandexAfterSerachIPhone.collectResultsFromPage();
         yandexAfterSerachIPhone.collectResults();
     }
+
+    @Test
+    public void AuthorizeTest(){
+
+        LmsliteAuthorize lmsliteAuthorize = new LmsliteAuthorize(chromeDriver);
+        lmsliteAuthorize.elementsClickable();
+        lmsliteAuthorize.goToLogin("fominaelena","1P73BP4Z");
+        lmsliteAuthorize.assertNewPage();
+
+    }
 }
