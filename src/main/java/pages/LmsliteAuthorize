@@ -1,0 +1,46 @@
+package pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class LmsliteAuthorize {
+
+    protected WebDriver driver;
+
+    public LmsliteAuthorize(WebDriver driver) {
+        this.driver = driver;
+        this.driver.get("https://lmslite47vr.demo.mirapolis.ru/mira/Do?doaction=Go&s=XNrAdEtB0wGzBBp2B7jc&id=0&type=customloginpage");
+    }
+
+    public void elementsClickable() {
+
+        WebDriverWait wait = new WebDriverWait(driver,10);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//img[@src='Logo/Login']")));
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@id='show_password']")));
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//table[@class='links-container']")));
+
+    }
+
+    public void goToLogin(String keysFind, String keysFind2) {
+
+        WebElement login = driver.findElement(By.xpath("//input[@name='user']"));
+        login.click();
+        login.sendKeys(keysFind);
+
+        WebElement password = driver.findElement(By.xpath("//input[@name='password']"));
+        password.click();
+        password.sendKeys(keysFind2);
+
+        driver.findElement(By.xpath("//button[@type='submit']")).click();
+
+    }
+
+    public void assertNewPage(){
+
+        WebDriverWait wait = new WebDriverWait(driver,10);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//body[contains(@class, 'mira-body-visual-mode-format-desktop')]")));
+    }
+}
